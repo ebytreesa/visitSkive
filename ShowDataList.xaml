@@ -6,17 +6,23 @@
         xmlns:local="clr-namespace:visitSkive"
         mc:Ignorable="d"
         Title="ShowDataList" Height="450" Width="800">
-        <Grid>
-            <ListView Margin="10" Name="lvAttractions" MouseDoubleClick="lvAttractions_MouseDoubleClick">
-                <ListView.View>
-                    <GridView >
-                        <GridViewColumn Header="Id" Width="120" DisplayMemberBinding="{Binding Id}"  />
-                        <GridViewColumn Header="Navn" Width="120" DisplayMemberBinding="{Binding Name}" />                        
-                        <GridViewColumn Header="Owner Navn" Width="120" DisplayMemberBinding="{Binding Owner.Name}" />                        
-                        <!--<GridViewColumn Header="Vis " Width="120" DisplayMemberBinding="{Binding}" />-->                        
-                    </GridView>
-                </ListView.View>
-            </ListView>
-        </Grid>
+    <Grid>
+        <StackPanel  Height="77" Width="783" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,343.667" RenderTransformOrigin="0.502,-2.81">
+            <Button Content="Create" Background="Aquamarine" Height="38" Margin="84,0,563.667,0" RenderTransformOrigin="0.515,1.14"/>
+            <Button Content="Button" Height="55" Margin="266,0,462.667,0" RenderTransformOrigin="-0.5,-0.759"/>
+
+        </StackPanel>
+
+        <ListView Margin="0,82,0.333,9.667" Name="lvAttractions" MouseDoubleClick="lvAttractions_MouseDoubleClick">
+            <ListView.View>
+                <GridView AllowsColumnReorder="True"  >
+                    <GridViewColumn Header="Id" Width="120" DisplayMemberBinding="{Binding Id}"  />
+                    <GridViewColumn Header="Navn" Width="120" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Owner Navn" Width="120" DisplayMemberBinding="{Binding Owner.Name}" />
+                    <!--<GridViewColumn Header="Vis " Width="120" DisplayMemberBinding="{Binding}" />-->
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
 
 </Window>

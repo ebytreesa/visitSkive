@@ -66,6 +66,9 @@
     <Compile Include="ShowSelected.xaml.cs">
       <DependentUpon>ShowSelected.xaml</DependentUpon>
     </Compile>
+    <Compile Include="viewAttraction.xaml.cs">
+      <DependentUpon>viewAttraction.xaml</DependentUpon>
+    </Compile>
     <Page Include="Login.Xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -91,6 +94,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ShowSelected.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="viewAttraction.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

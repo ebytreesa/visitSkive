@@ -29,6 +29,8 @@ namespace visitSkive
             List<Attraction> att = DALAttraction.getAttractionsList(userId);
             //DALAttraction.showAttractions();   
             lvAttractions.ItemsSource = att;
+            
+
         }
 
         private void lvAttractions_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -36,13 +38,16 @@ namespace visitSkive
             //DALAttraction selected = lvAttractions.SelectedItem as DALAttraction;      
             Attraction selected = lvAttractions.SelectedItem as Attraction;      
             DALAttraction.GetSelected(selected.Id);
-            ShowSelected selectedItemView = new ShowSelected(selected);
+            //ShowSelected selectedItemView = new ShowSelected(selected);
+            //selectedItemView.Show();
+            viewAttraction selectedItemView = new viewAttraction(selected);
             selectedItemView.Show();
             this.Close();
+             
 
         }
-        
 
+    
 
-    }
+}
 }
