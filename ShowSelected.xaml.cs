@@ -19,28 +19,15 @@ namespace visitSkive
     /// </summary>
     public partial class ShowSelected : Window
     {
-        public AttractionOwner Selected { get; set; }
+        public Attraction Selected { get; set; }        
 
-        //public Test  Selected{get; set;}
-
-        //public ShowSelected(Test selected)
-        //{
-        //    InitializeComponent();
-        //    Selected = selected;
-        //    Id.Text = Selected.Att.Id.ToString();
-        //    Name.Text = Selected.Att.Name;
-        //    CreatedBy.Text = selected.Ow.Name;
-
-        //}
-
-
-        public ShowSelected(AttractionOwner selected)
+        public ShowSelected(Attraction selected)
         {
             InitializeComponent();
             Selected = selected;
             Id.Text = Selected.Id.ToString();
             Name.Text = Selected.Name;
-            CreatedBy.Text = selected.OwnerName;
+            CreatedBy.Text = selected.Owner.Name;
         }
     }
 }

@@ -12,8 +12,8 @@
                     <GridView >
                         <GridViewColumn Header="Id" Width="120" DisplayMemberBinding="{Binding Id}"  />
                         <GridViewColumn Header="Navn" Width="120" DisplayMemberBinding="{Binding Name}" />                        
-                        <GridViewColumn Header="Owner Navn" Width="120" DisplayMemberBinding="{Binding OwnerName}" />                        
-                        <GridViewColumn Header="Vis " Width="120" DisplayMemberBinding="{Binding}" />                        
+                        <GridViewColumn Header="Owner Navn" Width="120" DisplayMemberBinding="{Binding Owner.Name}" />                        
+                        <!--<GridViewColumn Header="Vis " Width="120" DisplayMemberBinding="{Binding}" />-->                        
                     </GridView>
                 </ListView.View>
             </ListView>

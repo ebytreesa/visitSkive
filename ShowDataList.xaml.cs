@@ -25,17 +25,17 @@ namespace visitSkive
         {
             userId = id;
             InitializeComponent();
-            List<AttractionOwner> att = AttractionOwner.getAttractionOwner(userId);
+            //List<DALAttraction> att = DALAttraction.getAttractionsList(userId);
+            List<Attraction> att = DALAttraction.getAttractionsList(userId);
             //DALAttraction.showAttractions();   
             lvAttractions.ItemsSource = att;
         }
 
         private void lvAttractions_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            AttractionOwner selected = lvAttractions.SelectedItem as AttractionOwner;      
-            AttractionOwner.getAttractionOwnerSelected(selected.Id);
-            //Test selected = lvAttractions.SelectedItem as Test;
-            //Test.TestSelected(selected.Att.Id);
+            //DALAttraction selected = lvAttractions.SelectedItem as DALAttraction;      
+            Attraction selected = lvAttractions.SelectedItem as Attraction;      
+            DALAttraction.GetSelected(selected.Id);
             ShowSelected selectedItemView = new ShowSelected(selected);
             selectedItemView.Show();
             this.Close();

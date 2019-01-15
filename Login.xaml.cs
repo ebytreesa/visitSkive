@@ -39,7 +39,8 @@ namespace visitSkive
                 sqlCmd.Parameters.AddWithValue("@OwnerID", PassWord.Text);
                 SqlDataReader reader;
                 reader = sqlCmd.ExecuteReader();
-                Owner owner = new Owner(1, "", "","");
+                //Owner owner = new Owner(1, "", "","");
+                Owner owner = new Owner();
 
                 if (reader.HasRows)
                 {
@@ -54,7 +55,12 @@ namespace visitSkive
                 }
                 else
                 {
-                    MessageBox.Show("Username or password is incorrect");
+                    // MessageBox.Show("Username or password is incorrect");
+                    //MessageBox.Show("Username not logged in. Showing data for id 482");
+                    owner.Id = 482;
+                    MainWindow dashboard = new MainWindow(owner.Id);
+                    dashboard.Show();
+                    this.Close();
                 }
             }
             catch (Exception ex)
