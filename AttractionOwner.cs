@@ -12,30 +12,32 @@ namespace visitSkive
     {        
         public int Id { get; set; } 
         public string Name { get; set; } 
-        public string OwnerName { get; set; } 
+        public string OwnerName { get; set; }
+        public string CategoryName { get; set; }
+
 
         public AttractionOwner(int id, string name, string ownerName)
         {
             Id = id;
             Name = name;
             OwnerName = ownerName;
-
         }
 
-        public static List<AttractionOwner> getAttractionOwner()
+        public static List<AttractionOwner> getAttractionOwner(int id)
         {
             SqlConnection con = new SqlConnection("Data Source=.;Initial Catalog=VisitSkive;"
                                  + "Integrated Security=true;");
             SqlCommand cmd = new SqlCommand();
             SqlDataReader reader;
-            cmd.Connection = con;
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select a.AttractionId, a.Name, o.Name as OwnerName from Attractions a inner join Owner o on a.OwnerId = o.OwnerId ";
+            cmd.Connection   = con;
+            cmd.CommandType  = CommandType.Text;
+            cmd.CommandText  = "select a.AttractionId, a.Name, o.Name as OwnerName from Attractions a inner join Owner o on a.OwnerId = o.OwnerId where o.OwnerId=@id ";
+            cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
             con.Open();
             reader = cmd.ExecuteReader();
             List<AttractionOwner> attractions = new List<AttractionOwner>();
             while (reader.Read())
-            {
+            {                
                 attractions.Add(new AttractionOwner((int)reader[0], reader[1].ToString(), reader[2].ToString()));
             }
 
@@ -43,20 +45,20 @@ namespace visitSkive
             return attractions;
         }
 
+
         public static AttractionOwner getAttractionOwnerSelected(int id)
         {
             SqlConnection con = new SqlConnection("Data Source=.;Initial Catalog=VisitSkive;"
                                  + "Integrated Security=true;");
             SqlCommand cmd = new SqlCommand();
             SqlDataReader reader;
-            cmd.Connection = con;
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select a.AttractionId, a.Name, o.Name as OwnerName from Attractions a inner join Owner o on a.OwnerId = o.OwnerId  where a.AttractionId=@id";
+            cmd.Connection   = con;
+            cmd.CommandType  = CommandType.Text;
+            cmd.CommandText  = "select a.AttractionId, a.Name, o.Name as OwnerName from Attractions a inner join Owner o on a.OwnerId = o.OwnerId  where a.AttractionId=@id";
             cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
 
             con.Open();
             reader = cmd.ExecuteReader();
-            //List<AttractionOwner> attractions = new List<AttractionOwner>();
             AttractionOwner selectedItem = new AttractionOwner(1, "", "");
             while (reader.Read())
             {

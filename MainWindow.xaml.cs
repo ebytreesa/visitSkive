@@ -22,10 +22,13 @@ namespace visitSkive
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public int userId { get; set; }
+
+        public MainWindow(int id)
         {
+             userId = id;           
             InitializeComponent();
-           
+            text.Text = userId.ToString();
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
@@ -57,7 +60,8 @@ namespace visitSkive
 
         private void ShowData_Click(object sender, RoutedEventArgs e)
         {
-            ShowDataList listView = new ShowDataList();
+            int id = userId;
+            ShowDataList listView = new ShowDataList(userId);
             listView.Show();
             this.Close();
 

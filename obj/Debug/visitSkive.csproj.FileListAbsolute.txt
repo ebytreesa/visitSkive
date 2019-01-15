@@ -21,3 +21,5 @@ C:\Users\eby\source\repos\visitSkive\visitSkive\obj\Debug\Login.g.cs
 C:\Users\eby\source\repos\visitSkive\visitSkive\obj\Debug\Login.baml
 C:\Users\eby\source\repos\visitSkive\visitSkive\obj\Debug\ShowDataList.g.cs
 C:\Users\eby\source\repos\visitSkive\visitSkive\obj\Debug\ShowDataList.baml
+C:\Users\eby\source\repos\visitSkive\visitSkive\obj\Debug\ShowSelected.g.cs
+C:\Users\eby\source\repos\visitSkive\visitSkive\obj\Debug\ShowSelected.baml

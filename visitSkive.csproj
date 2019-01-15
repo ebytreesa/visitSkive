@@ -63,6 +63,10 @@
     <Compile Include="ShowDataList.xaml.cs">
       <DependentUpon>ShowDataList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ShowSelected.xaml.cs">
+      <DependentUpon>ShowSelected.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Test.cs" />
     <Page Include="Login.Xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -85,6 +89,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ShowDataList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShowSelected.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

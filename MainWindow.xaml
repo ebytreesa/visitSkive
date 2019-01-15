@@ -7,11 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
-        <TextBox Name="text" Margin="2667,97,-3379.667,-97.333"/>
+
         <Button Name = "button" Content = "Hent Data" Click="button1_Click" Width = "150" Height = "30" HorizontalAlignment = "Center" Margin="322,0,321.333,195.667" VerticalAlignment="Center" />
 
-        <Button Name = "btn" Content = "Vis Data" Click="ShowData_Click" Width = "150" Height = "60" HorizontalAlignment = "Center" Margin="200" VerticalAlignment="Center" />
-
+        <Button Name = "btn" Content = "Vis Data" Click="ShowData_Click" Width = "209" Height = "79" HorizontalAlignment = "Center" Margin="322,180,262.333,161.667" VerticalAlignment="Center" />
+        <TextBox Name="text" Text="hello" Margin="10,10,500.333,345.667"></TextBox>
     </Grid>
 </Window>

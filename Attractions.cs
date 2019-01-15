@@ -14,13 +14,8 @@ namespace visitSkive
     
     public class AttractionsList
     {
-        public List<Attraction> Attractions;
+        public List<Attraction> Attractions;        
 
-        
-
-        /// <summary>
-        /// ///////////////////////////////////////////////////
-        /// </summary>
         public void InsertAttractionsFromFile()
         {
             SqlConnection con = new SqlConnection("Data Source=.;Initial Catalog=visitSkive;"

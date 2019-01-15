@@ -32,23 +32,23 @@ namespace visitSkive
             {
                 if (SqlCon.State == System.Data.ConnectionState.Closed)
                     SqlCon.Open();
-                String query = "SELECT COUNT(1) FROM [Owner] WHERE Name=@Name AND OwnerId=@OwnerID";
+                String query = "SELECT * FROM [Owner] WHERE OwnerId=@OwnerID AND Name=@Name ";
                 SqlCommand sqlCmd = new SqlCommand(query, SqlCon);
                 sqlCmd.CommandType = System.Data.CommandType.Text;
                 sqlCmd.Parameters.AddWithValue("@Name", User.Text);
                 sqlCmd.Parameters.AddWithValue("@OwnerID", PassWord.Text);
-                int count = Convert.ToInt32(sqlCmd.ExecuteScalar());
                 SqlDataReader reader;
                 reader = sqlCmd.ExecuteReader();
+                Owner owner = new Owner(1, "", "","");
 
-                if (count == 1)
+                if (reader.HasRows)
                 {
                     while (reader.Read())
                     {
-                        
-                       // attractions.Add(new Attraction((int)reader[0], reader[8].ToString()));
+                        owner.Id = (int)reader[0];
                     }
-                    MainWindow dashboard = new MainWindow();
+
+                    MainWindow dashboard = new MainWindow(owner.Id);
                     dashboard.Show();
                     this.Close();
                 }

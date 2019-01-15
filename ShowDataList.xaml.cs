@@ -19,24 +19,30 @@ namespace visitSkive
     /// </summary>
     public partial class ShowDataList : Window
     {
-        public ShowDataList()
+        public int userId { get; set; }
+
+        public ShowDataList(int id)
         {
+            userId = id;
             InitializeComponent();
-            //List<Category> cat = DALCategory.showCategory();
-            //List<Attraction> att = DALAttraction.getAttractions();
-            List<AttractionOwner> att = AttractionOwner.getAttractionOwner();
+            List<AttractionOwner> att = AttractionOwner.getAttractionOwner(userId);
             //DALAttraction.showAttractions();   
             lvAttractions.ItemsSource = att;
-
-
         }
 
         private void lvAttractions_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            AttractionOwner selected = lvAttractions.SelectedItem as AttractionOwner;
+            AttractionOwner selected = lvAttractions.SelectedItem as AttractionOwner;      
             AttractionOwner.getAttractionOwnerSelected(selected.Id);
-        }
+            //Test selected = lvAttractions.SelectedItem as Test;
+            //Test.TestSelected(selected.Att.Id);
+            ShowSelected selectedItemView = new ShowSelected(selected);
+            selectedItemView.Show();
+            this.Close();
 
+        }
         
+
+
     }
 }
