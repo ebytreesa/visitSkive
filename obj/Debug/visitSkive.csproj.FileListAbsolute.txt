@@ -25,3 +25,5 @@ C:\Users\eby\source\repos\visitSkive\visitSkive\obj\Debug\ShowSelected.g.cs
 C:\Users\eby\source\repos\visitSkive\visitSkive\obj\Debug\ShowSelected.baml
 C:\Users\eby\source\repos\visitSkive\visitSkive\obj\Debug\viewAttraction.g.cs
 C:\Users\eby\source\repos\visitSkive\visitSkive\obj\Debug\viewAttraction.baml
+C:\Users\eby\source\repos\visitSkive\visitSkive\obj\Debug\Create.g.cs
+C:\Users\eby\source\repos\visitSkive\visitSkive\obj\Debug\Create.baml

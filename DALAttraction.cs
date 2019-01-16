@@ -8,9 +8,21 @@ using System.Threading.Tasks;
 
 namespace visitSkive
 {
-    public class DALAttraction
+    public static class DALAttraction
     {
-    
+        public static string SafeGetString(this SqlDataReader reader, int colIndex)
+        {
+            if (!reader.IsDBNull(colIndex))
+                return reader.GetString(colIndex);
+            return string.Empty;
+        }
+        public static Double SafeGetDouble(this SqlDataReader reader, int colIndex)
+        {
+            if (!reader.IsDBNull(colIndex))
+                return (float)reader.GetSqlDouble(colIndex);
+            return 0;
+        }
+
         public static Attraction GetSelected(int id)
         {
             SqlConnection con = new SqlConnection("Data Source=.;Initial Catalog=VisitSkive;"
@@ -23,10 +35,10 @@ namespace visitSkive
                               "a.Serialized, a.Online, a.Language, a.Name, a.CanonicalUrl," +
                               " o.Name as OwnerName, cat.Name as CatName, m.Name as MainCatName, ad.*, ci.*" +
                               " from Attractions a inner join owner o on a.OwnerId = o.OwnerId " +
-                              " inner join Category cat on a.CategoryId = cat.CategoryId" +
-                              " inner join MainCategory m on a.MainCategoryId = m.mainCategoryId" +
-                              " inner join Address ad on a.AttractionId = ad.AttractionId" +
-                              " inner  join ContactInformation ci on a.AttractionId = ci.AttractionId" +
+                              " left join Category cat on a.CategoryId = cat.CategoryId" +
+                              " left join MainCategory m on a.MainCategoryId = m.mainCategoryId" +
+                              " left join Address ad on a.AttractionId = ad.AttractionId" +
+                              " left  join ContactInformation ci on a.AttractionId = ci.AttractionId" +
                               " where a.AttractionId = @id";
             cmd.CommandText = var;
 
@@ -56,8 +68,8 @@ namespace visitSkive
                 selectedItem.Address.City = reader[17].ToString();
                 selectedItem.Address.Municipality.Name = reader[18].ToString();
                 selectedItem.Address.Region = reader[19].ToString();
-                selectedItem.Address.GeoCoordinate.Latitude = (float) reader.GetDouble(20);
-                selectedItem.Address.GeoCoordinate.Longitude =(float) reader.GetSqlDouble(21);
+                selectedItem.Address.GeoCoordinate.Latitude = (float) SafeGetDouble(reader,20);
+                selectedItem.Address.GeoCoordinate.Longitude =(float) SafeGetDouble(reader, 21);
                 selectedItem.ContactInformation.Phone = reader[22].ToString();
                 selectedItem.ContactInformation.Mobile = reader[23].ToString();
                 selectedItem.ContactInformation.Fax = reader[24].ToString();
@@ -102,8 +114,9 @@ namespace visitSkive
             con.Close();
             return attractions;
         }
+       
     }
- 
+    
 }
 
 

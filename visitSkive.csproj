@@ -59,6 +59,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AttractionsList.cs" />
+    <Compile Include="Create.xaml.cs">
+      <DependentUpon>Create.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DALAttraction.cs" />
     <Compile Include="ShowDataList.xaml.cs">
       <DependentUpon>ShowDataList.xaml</DependentUpon>
@@ -69,6 +72,10 @@
     <Compile Include="viewAttraction.xaml.cs">
       <DependentUpon>viewAttraction.xaml</DependentUpon>
     </Compile>
+    <Page Include="Create.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login.Xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
