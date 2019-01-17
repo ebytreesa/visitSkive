@@ -36,11 +36,13 @@ namespace visitSkive
         {
             // read file into a string and deserialize JSON to a typeS
             message.Visibility = Visibility.Visible;
-            AttractionsList skive = JsonConvert.DeserializeObject<AttractionsList>(File.ReadAllText(@"C:\Users\eby\Documents\dania\visitSkive\skive_json.json"),
+            AttractionsList skive = JsonConvert.DeserializeObject<AttractionsList>(File.ReadAllText(@"skive_json.json"),
            new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
             try
             {
                 skive.InsertOwnerFromFile();
+                
+                
                 skive.InsertLinkFromFile();
                 skive.InsertCategory();
                 skive.InsertContactInformationFromFile();
@@ -49,6 +51,7 @@ namespace visitSkive
                 skive.InsertAddressFromFile();
                 skive.InsertAttractionsFromFile();
                 MessageBox.Show("Data er hentet");
+                message.Text = "Data er hentet.";
 
             }
             catch (Exception)
