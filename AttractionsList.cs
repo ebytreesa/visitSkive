@@ -68,7 +68,7 @@ namespace visitSkive
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        //MessageBox.Show(ex.Message);
                     }
                 }
             }
@@ -403,7 +403,7 @@ namespace visitSkive
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        //MessageBox.Show(ex.Message);
                     }
                 }
             }
@@ -437,7 +437,7 @@ namespace visitSkive
     //    public Attraction[] Attraction { get; set; }
     //}
 
-    public class Attraction :INotifyPropertyChanged
+    public class Attraction // :INotifyPropertyChanged
     {
         public int Id { get; set; }
         public DateTime Created { get; set; }
@@ -486,16 +486,15 @@ namespace visitSkive
         public Attraction(int id, string name)
         {
             Id = id;
-            Name = name;
-            
+            Name = name;            
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyRaised(string propertyname)
-        {
-            if (PropertyChanged != null) {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
-            }
-        }
+        //public event PropertyChangedEventHandler PropertyChanged;
+        //private void OnPropertyRaised(string propertyname)
+        //{
+        //    if (PropertyChanged != null) {
+        //        PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+        //    }
+        //}
         
 
     }

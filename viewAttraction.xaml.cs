@@ -27,9 +27,27 @@ namespace visitSkive
 
         public viewAttraction(Attraction selected, int id)
         {
-            userId = id;
             InitializeComponent();
+            userId = id;
             Selected = selected;
+
+
+            List<Category> catList = DALCategory.getCategoryList();
+            
+            List<string> names = new List<string>();
+            
+                foreach (Category cat in catList)
+                {
+                    string name = cat.Name;
+                    names.Add(name);
+                }
+                category.ItemsSource = names;
+            if (name != null)
+            {
+
+                category.SelectedItem = Selected.Category.Name.ToString();
+            }
+
             name.Text = Selected.Name.ToString();
             language.Text = Selected.Language.ToString();
             canoniacalUrl.Text = Selected.CanonicalUrl.ToString();
@@ -41,11 +59,13 @@ namespace visitSkive
             {
                 online.SelectedIndex = 0;
             }
+            //category.Text = Selected.Category.Name.ToString();
+            //mainCategory.Text = Selected.MainCategory.Name.ToString();
             addressline1.Text = Selected.Address.AddressLine1.ToString();
             addressline2.Text = Selected.Address.AddressLine2.ToString();
             postalCode.Text = Selected.Address.PostalCode.ToString();
             city.Text = Selected.Address.City.ToString();
-            municippality.Text = Selected.Address.Municipality.ToString();
+            municippality.Text = Selected.Address.Municipality.Name.ToString();
             region.Text = Selected.Address.Region.ToString();
             geoLat.Text = Selected.Address.GeoCoordinate.Latitude.ToString();
             geoLong.Text = Selected.Address.GeoCoordinate.Longitude.ToString();
@@ -65,21 +85,7 @@ namespace visitSkive
                                     + "Integrated Security=true;");
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
-            //SqlCommand cmd1 = new SqlCommand();
-            //cmd1.Connection = con;
-            //cmd1.CommandText = " select top 1 AttractionId  from Attractions ORDER BY AttractionId desc";
-            //SqlDataReader reader;
-            //// open con to db for finding attractionId
-            //con.Open();
-            //cmd1.ExecuteNonQuery();
-            //reader = cmd1.ExecuteReader();
-            //int id = new int();
-
-            //while (reader.Read())
-            //{
-            //    id = (int)reader[0] + 1;
-            //}
-
+            
             cmd.Parameters.Add("@AttractionId", SqlDbType.Int).Value = Selected.Id;
 
             cmd.Parameters.Add("@Modified", SqlDbType.DateTime).Value = DateTime.Now;
@@ -91,12 +97,24 @@ namespace visitSkive
             AddParam(cmd, language.Text, "Language", SqlDbType.NVarChar);
             AddParam(cmd, canoniacalUrl.Text, "CanonicalUrl", SqlDbType.NVarChar);
 
+            //cmd.Parameters.Add("@CatName", SqlDbType.NVarChar).Value = category.SelectedItem;
+
+            int catId = DALCategory.GetCatId(category.SelectedItem.ToString());
+            cmd.Parameters.Add("@CatId", SqlDbType.Int).Value = catId;
+
+
             AddParam(cmd, addressline1.Text, "Addressline1", SqlDbType.NVarChar);
             AddParam(cmd, addressline2.Text, "Addressline2", SqlDbType.NVarChar);
             AddParam(cmd, municippality.Text, "Municippality", SqlDbType.NVarChar);
             AddParam(cmd, city.Text, "City", SqlDbType.NVarChar);
             AddParam(cmd, region.Text, "Region", SqlDbType.NVarChar);
             AddParam(cmd, postalCode.Text, "postalCode", SqlDbType.Int);
+            
+            //if (int.TryParse(postalCode,  out postalCode ))
+            //{
+            //    AddParam(cmd, postalCode.Text, "postalCode", SqlDbType.Int);
+
+            //}
             AddParam(cmd, geoLat.Text, "GeoLat", SqlDbType.Float);
             AddParam(cmd, geoLong.Text, "GeoLong", SqlDbType.Float);
 
@@ -107,7 +125,7 @@ namespace visitSkive
             AddParam(cmd, linkurl.Text, "Linkurl", SqlDbType.NVarChar);
 
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "update Attractions set Modified = @Modified,Online = @Online, OwnerId =@OwnerId, Name = @Name," +
+            cmd.CommandText = "update Attractions set Modified = @Modified,Online = @Online, OwnerId =@OwnerId, CategoryId=@CatId, Name = @Name," +
                                  " Language =@Language,CanonicalUrl =@CanonicalUrl  where AttractionId = @AttractionId ;" +
 
                               "update  Address set Addressline1 = @Addressline1,Addressline2 =@Addressline2, " +
@@ -143,6 +161,36 @@ namespace visitSkive
         {
             ShowDataList listView = new ShowDataList(userId);
             listView.Show();
+            this.Close();
+        }
+
+
+        private void DeleteDataButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("sure?");
+
+            SqlConnection con = new SqlConnection("Data Source=.;Initial Catalog=visitSkive;"
+                                 + "Integrated Security=true;");
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+
+            cmd.Parameters.Add("@AttractionId", SqlDbType.Int).Value = Selected.Id;
+
+            //AddParam(cmd, name, "Name", SqlDbType.NVarChar);
+            //AddParam(cmd, age, "Age", SqlDbType.Int);
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "delete from Attractions  where AttractionId = @AttractionId;" +
+                              " delete from Address  where AttractionId = @AttractionId;" +
+                              "delete from ContactInformation  where AttractionId = @AttractionId";
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+
+            // Open attraction list view
+            ShowDataList listView = new ShowDataList(userId);
+            listView.Show();
+            MessageBox.Show("Data deleted");
             this.Close();
         }
 

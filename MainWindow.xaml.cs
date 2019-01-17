@@ -28,27 +28,27 @@ namespace visitSkive
         {
              userId = id;           
             InitializeComponent();
-            text.Text = userId.ToString();
+            message.Visibility = Visibility.Hidden;
+            //text.Text = userId.ToString();
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             // read file into a string and deserialize JSON to a typeS
-
+            message.Visibility = Visibility.Visible;
             AttractionsList skive = JsonConvert.DeserializeObject<AttractionsList>(File.ReadAllText(@"C:\Users\eby\Documents\dania\visitSkive\skive_json.json"),
            new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
             try
             {
-                //skive.InsertOwnerFromFile();
-                //skive.InsertLinkFromFile();
-                //skive.InsertCategory();
-                //skive.InsertContactInformationFromFile();
-                //skive.InsertDescriptionFromFile();
-                //skive.InsertMainCategoryFromFile();
-                //skive.InsertAddressFromFile();
-                //skive.InsertAttractionsFromFile();
-               // List<Category> cat = DALCategory.showCategory();
-                //MessageBox.Show("Data er hentet");
+                skive.InsertOwnerFromFile();
+                skive.InsertLinkFromFile();
+                skive.InsertCategory();
+                skive.InsertContactInformationFromFile();
+                skive.InsertDescriptionFromFile();
+                skive.InsertMainCategoryFromFile();
+                skive.InsertAddressFromFile();
+                skive.InsertAttractionsFromFile();
+                MessageBox.Show("Data er hentet");
 
             }
             catch (Exception)

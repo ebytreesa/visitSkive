@@ -44,10 +44,11 @@
             <Label Grid.Row="2">CanonicalUrl</Label>
             <TextBox Name="canoniacalUrl" Grid.Row="2" Grid.Column="1"  Margin="0,0,0,10" />
             <Label Grid.Row="3">Category</Label>
-            <TextBox Name="category" Grid.Row="3" Grid.Column="1"  Margin="0,0,0,10" />
-            <Label Grid.Row="4">Main Category</Label>
-            <TextBox Name="mainCategory" Grid.Row="4" Grid.Column="1"  Margin="0,0,0,10" />
-            <Label Grid.Row="5">ddress line 1</Label>
+            <ComboBox Name="category" Grid.Row="3" Grid.Column="1"  Margin="0,0,0,10">
+            </ComboBox>
+            <!--<Label Grid.Row="4">Main Category</Label>
+            <TextBox Name="mainCategory" Grid.Row="4" Grid.Column="1"  Margin="0,0,0,10" />-->
+            <Label Grid.Row="5">Address line 1</Label>
             <TextBox Name="addressline1" Grid.Row="5" Grid.Column="1"  Margin="0,0,0,10" />
             <Label Grid.Row="6">Address line 2</Label>
             <TextBox Name="addressline2" Grid.Row="6" Grid.Column="1"  Margin="0,0,0,10" />

@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:visitSkive"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Margin="10">
+        <Button Name = "button" Content = "Hent Data" Click="button1_Click" Width = "157" Height = "61" HorizontalAlignment = "Left" Margin="325,77,0,262.667" VerticalAlignment="Center" />
 
-        <Button Name = "button" Content = "Hent Data" Click="button1_Click" Width = "150" Height = "30" HorizontalAlignment = "Center" Margin="322,0,321.333,195.667" VerticalAlignment="Center" />
+        <Button Name = "btn" Content = "Vis Data" Click="ShowData_Click" Width = "157" Height = "50" HorizontalAlignment = "Left" Margin="325,184,0,166.667" VerticalAlignment="Center" />
+        <TextBox Name="message"  Text="Tryk" Background="Beige"  Height="50px" Margin="257,268,216.333,82.667"/>
 
-        <Button Name = "btn" Content = "Vis Data" Click="ShowData_Click" Width = "209" Height = "79" HorizontalAlignment = "Center" Margin="322,180,262.333,161.667" VerticalAlignment="Center" />
-        <TextBox Name="text" Text="hello" Margin="10,10,500.333,345.667"></TextBox>
-    </Grid>
+            </Grid>
 </Window>

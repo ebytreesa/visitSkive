@@ -27,6 +27,18 @@ namespace visitSkive
         {
             userId = id;
             InitializeComponent();
+
+            List<Category> catList = DALCategory.getCategoryList();
+
+            List<string> names = new List<string>();
+
+            foreach (Category cat in catList)
+            {
+                string name = cat.Name;
+                names.Add(name);
+            }
+            category.ItemsSource = names;
+           
         }
 
         private void SaveDataButton_Click(object sender, RoutedEventArgs e)
@@ -56,6 +68,9 @@ namespace visitSkive
                 cmd.Parameters.Add("@Online", SqlDbType.Bit).Value = online.SelectedIndex;
                 cmd.Parameters.Add("@OwnerId", SqlDbType.NVarChar).Value = userId;
 
+                int catId = DALCategory.GetCatId(category.SelectedItem.ToString());
+                cmd.Parameters.Add("@CatId", SqlDbType.Int).Value = catId;
+
 
                 AddParam(cmd, name.Text, "Name", SqlDbType.NVarChar);
                 AddParam(cmd, language.Text, "Language", SqlDbType.NVarChar);
@@ -67,20 +82,20 @@ namespace visitSkive
                 AddParam(cmd, city.Text, "City", SqlDbType.NVarChar);
                 AddParam(cmd, region.Text, "Region", SqlDbType.NVarChar);
                 AddParam(cmd, postalCode.Text, "postalCode", SqlDbType.Int);
-                AddParam(cmd, geoLat.Text, "GeoLat", SqlDbType.Float);
-                AddParam(cmd, geoLong.Text, "GeoLong", SqlDbType.Float);
+                //AddParam(cmd, geoLat.Text, "GeoLat", SqlDbType.Float);
+                //AddParam(cmd, geoLong.Text, "GeoLong", SqlDbType.Float);
 
-            AddParam(cmd, phone.Text, "Phone", SqlDbType.NVarChar);
+                AddParam(cmd, phone.Text, "Phone", SqlDbType.NVarChar);
                 AddParam(cmd, mobile.Text, "Mobile", SqlDbType.NVarChar);
                 AddParam(cmd, fax.Text, "Fax", SqlDbType.NVarChar);
                 AddParam(cmd, email.Text, "Email", SqlDbType.NVarChar);
-                AddParam(cmd, linkurl.Text, "Linkurl", SqlDbType.NVarChar);
+                AddParam(cmd, linkurl.Text, "Linkurl", SqlDbType.NVarChar);//, GeoCordinateLatitude,  GeoCordinateLongitude , @GeoLat, @GeoLong
 
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "insert into Attractions (AttractionId, Created,Modified,Serialized,Online, OwnerId, Name, Language,CanonicalUrl) values " +
-                "(@AttractionId, @Created,@Modified,@Serialized,@Online,@OwnerId, @Name, @language,@CanonicalUrl)" +
-                                   "insert into Address (AttractionId, Addressline1,Addressline2, Municipality, City, postalCode,Region,  GeoCordinateLatitude,  GeoCordinateLongitude) values " +
-                                     "(@AttractionId, @Addressline1,@Addressline2,@Municippality, @City, @postalCode,@Region, @ GeoLat, @ GeoLong)" +
+            cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "insert into Attractions (AttractionId, Created,Modified,Serialized,Online, OwnerId,CategoryId, Name, Language,CanonicalUrl) values " +
+                                      "(@AttractionId, @Created,@Modified,@Serialized,@Online,@OwnerId, @CatId, @Name, @language,@CanonicalUrl)" +
+                                   "insert into Address (AttractionId, Addressline1,Addressline2, Municipality, City, postalCode,Region) values " +
+                                     "(@AttractionId, @Addressline1,@Addressline2,@Municippality, @City, @postalCode,@Region)" +
                                    "insert into ContactInformation (AttractionId, Phone,Mobile, Fax, Email, Linkurl) values " +
                                      "(@AttractionId, @Phone,@Mobile,@Fax, @Email, @Linkurl)";
                 con.Close();

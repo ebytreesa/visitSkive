@@ -63,6 +63,7 @@
       <DependentUpon>Create.xaml</DependentUpon>
     </Compile>
     <Compile Include="DALAttraction.cs" />
+    <Compile Include="DALCategory.cs" />
     <Compile Include="ShowDataList.xaml.cs">
       <DependentUpon>ShowDataList.xaml</DependentUpon>
     </Compile>

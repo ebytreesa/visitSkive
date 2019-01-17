@@ -10,17 +10,19 @@
 
         <Grid>
             <Frame Name="ListViewMain"  Margin="0 50 0 0 "/>
-            <StackPanel  Height="50" Width="793" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.502,-2.81">
-                <Button Content="Create" Width="100px" HorizontalAlignment="Left" Margin="100 10 0 0" Background="AntiqueWhite" Click="CreateButton_Click"/>
-            </StackPanel>
+            <Grid  Height="50" Width="793" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.502,-2.81">
+                <Button Content="Home" Width="100px" HorizontalAlignment="Left" Margin="100 10 0 0" Background="AntiqueWhite" Click="BackButton_Click"/>
+                <Button Content="Create" Width="100px" HorizontalAlignment="Left" Margin="400 10 0 0" Background="AntiqueWhite" Click="CreateButton_Click"/>
+                <Button Content="Logout" Width="100px" HorizontalAlignment="Left" Margin="600 10 0 0" Background="AntiqueWhite" Click="LogoutButton_Click"/>
+            </Grid>
 
             <ListView Margin="0,82,0.333,9.667" Name="lvAttractions" MouseDoubleClick="lvAttractions_MouseDoubleClick" GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler"   >
                 <ListView.View>
                     <GridView >
                         <GridViewColumn Header="Id" Width="120" DisplayMemberBinding="{Binding Id}"  />
                         <GridViewColumn Header="Navn" Width="200" DisplayMemberBinding="{Binding Name}" />
-                        <GridViewColumn Header="Owner Navn" Width="120" DisplayMemberBinding="{Binding Owner.Name}" />
-                        <GridViewColumn Header="Vis " Width="120" DisplayMemberBinding="{Binding}" />
+                        <GridViewColumn Header="Owner Navn" Width="150" DisplayMemberBinding="{Binding Owner.Name}" />
+                        <GridViewColumn Header="Category" Width="200" DisplayMemberBinding="{Binding Category.Name}" />
                     </GridView>
                 </ListView.View>
             </ListView>

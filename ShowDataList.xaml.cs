@@ -98,18 +98,34 @@ namespace visitSkive
         private void lvAttractions_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             //DALAttraction selected = lvAttractions.SelectedItem as DALAttraction;      
-            Attraction selected = lvAttractions.SelectedItem as Attraction;      
-            Attraction selectedItem = DALAttraction.GetSelected(selected.Id);
-            viewAttraction selectedItemView = new viewAttraction(selectedItem, userId);
-            selectedItemView.Show();
-            this.Close();            
-
+            Attraction selected = lvAttractions.SelectedItem as Attraction;
+            if (selected != null)
+            {
+                Attraction selectedItem = DALAttraction.GetSelected(selected.Id);
+                viewAttraction selectedItemView = new viewAttraction(selectedItem, userId);
+                selectedItemView.Show();
+                this.Close();
+            }
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
             Create create = new Create(userId);
             create.Show();
+            this.Close();
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow home = new MainWindow(userId);
+            home.Show();
+            this.Close();
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
             this.Close();
         }
     }

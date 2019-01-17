@@ -23,6 +23,7 @@ namespace visitSkive
             return 0;
         }
 
+        // get selected attraction from attractions list
         public static Attraction GetSelected(int id)
         {
             SqlConnection con = new SqlConnection("Data Source=.;Initial Catalog=VisitSkive;"
@@ -33,7 +34,8 @@ namespace visitSkive
             cmd.CommandType = CommandType.Text;
             string var = "select a.AttractionId, a.Created, a.CreatedBy, a.Modified, a.ModifiedBy," +
                               "a.Serialized, a.Online, a.Language, a.Name, a.CanonicalUrl," +
-                              " o.Name as OwnerName, cat.Name as CatName, m.Name as MainCatName, ad.*, ci.*" +
+                              " o.Name as OwnerName, cat.Name as CatName, m.Name as MainCatName," +
+                              " ad.*, ci.*" +
                               " from Attractions a inner join owner o on a.OwnerId = o.OwnerId " +
                               " left join Category cat on a.CategoryId = cat.CategoryId" +
                               " left join MainCategory m on a.MainCategoryId = m.mainCategoryId" +
@@ -66,15 +68,15 @@ namespace visitSkive
                 selectedItem.Address.AddressLine2 = reader[15].ToString();
                 selectedItem.Address.PostalCode =(int) reader[16];
                 selectedItem.Address.City = reader[17].ToString();
-                selectedItem.Address.Municipality.Name = reader[18].ToString();
+                selectedItem.Address.Municipality.Name= reader[18].ToString();
                 selectedItem.Address.Region = reader[19].ToString();
                 selectedItem.Address.GeoCoordinate.Latitude = (float) SafeGetDouble(reader,20);
                 selectedItem.Address.GeoCoordinate.Longitude =(float) SafeGetDouble(reader, 21);
-                selectedItem.ContactInformation.Phone = reader[22].ToString();
-                selectedItem.ContactInformation.Mobile = reader[23].ToString();
-                selectedItem.ContactInformation.Fax = reader[24].ToString();
-                selectedItem.ContactInformation.Email = reader[25].ToString();
-                selectedItem.ContactInformation.Link.Url = reader[26].ToString();
+                selectedItem.ContactInformation.Phone = reader[23].ToString();
+                selectedItem.ContactInformation.Mobile = reader[24].ToString();
+                selectedItem.ContactInformation.Fax = reader[25].ToString();
+                selectedItem.ContactInformation.Email = reader[26].ToString();
+                selectedItem.ContactInformation.Link.Url = reader[27].ToString();
 
             }
             con.Close();
@@ -90,7 +92,10 @@ namespace visitSkive
             SqlDataReader reader;
             cmd.Connection = con;
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select a.AttractionId, a.Name, o.Name as OwnerName from Attractions a inner join Owner o on a.OwnerId = o.OwnerId where o.OwnerId=@id ";
+            cmd.CommandText = "select a.AttractionId, a.Name, o.Name as OwnerName, c.Name  as CatName from Attractions a" +
+                " inner join Owner o on a.OwnerId = o.OwnerId  "+
+                "left join Category c on a.CategoryId = c.CategoryId where o.OwnerId=@id  ";
+
             cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
             con.Open();
             reader = cmd.ExecuteReader();
@@ -102,6 +107,7 @@ namespace visitSkive
                 Att.Name = reader[1].ToString();
                 //Owner Ow = new Owner();
                 Att.Owner.Name = reader[2].ToString();
+                Att.Category.Name = reader[3].ToString();
                 attractions.Add(Att); 
 
                 //DALAttraction AO = new DALAttraction();

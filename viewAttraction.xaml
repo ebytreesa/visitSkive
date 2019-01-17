@@ -6,62 +6,6 @@
         xmlns:local="clr-namespace:visitSkive"
         mc:Ignorable="d"
         Title="EditWindow" Height="450" Width="800">
-    <!--<Grid Margin="0,52,0.333,-0.333">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="207*"/>
-            -->
-    <!--<ColumnDefinition Width="67*"/>-->
-    <!--
-            <ColumnDefinition Width="383*"/>
-            <ColumnDefinition Width="203*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="8*"/>
-        </Grid.RowDefinitions>
-        <TextBox HorizontalAlignment="Left" Height="51" TextWrapping="Wrap" Text="Attraction ID" VerticalAlignment="Top" Width="206" FontSize="32" RenderTransformOrigin="0.5,0.5" Margin="0,1,0,0" Grid.RowSpan="2">
-            <TextBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.451"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBox.RenderTransform>
-        </TextBox>
-        <Label  Content="Created" HorizontalAlignment="Left" Height="51" Margin="0,0.333,0,0" Grid.RowSpan="2"  VerticalAlignment="Top" Width="205" FontSize="32" Grid.Row="1"/>
-        <TextBox HorizontalAlignment="Left" Height="51" Margin="0,0.667,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Created by" VerticalAlignment="Top" Width="205" Grid.RowSpan="2" FontSize="32"/>
-        <TextBox HorizontalAlignment="Left" Height="50" Grid.Row="3" TextWrapping="Wrap" Text="E-mail" VerticalAlignment="Top" Width="205" FontSize="32" Grid.RowSpan="2"/>
-        <TextBox HorizontalAlignment="Left" Height="51" Margin="0,5.333,0,0" Grid.Row="4" TextWrapping="Wrap" Text="Modified" VerticalAlignment="Top" Width="205" Grid.RowSpan="2" FontSize="32"/>
-        <TextBox HorizontalAlignment="Left" Height="51" Grid.Row="4" TextWrapping="Wrap" Text="modified by" VerticalAlignment="Top" Width="205" FontSize="32" Margin="0,44.333,0,0" Grid.RowSpan="3"/>
-        <TextBox HorizontalAlignment="Left" Height="51" Margin="0,1,0,0" Grid.Row="6" TextWrapping="Wrap" Text="Serialized" VerticalAlignment="Top" Width="205" FontSize="32" Grid.RowSpan="2"/>
-        <TextBox HorizontalAlignment="Left" Height="50" Grid.Row="7" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="205" FontSize="32" Margin="0,0.333,0,0" Grid.RowSpan="2"/>
-
-        -->
-    <!--<TextBox Name="Id" Text="" Margin="205,0,-0.4,0.2" TextWrapping="Wrap"></TextBox>-->
-    <!--
-
-        <TextBox Margin="3.913,0,0.335,44.333" TextWrapping="Wrap" Name="Id"  Text="" Height="45" VerticalAlignment="Bottom" FontSize="30" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-        <TextBox HorizontalAlignment="Left" Height="51" Margin="1.667,0.333,-4.667,0" Grid.RowSpan="2" TextWrapping="Wrap" Name="creattxt" Text="" VerticalAlignment="Top" Width="589" FontSize="30" TextChanged="creattxt_TextChanged" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" />
-        <TextBox HorizontalAlignment="Left" Height="51" Margin="1.667,0.667,-3.667,0" Grid.Row="2" TextWrapping="Wrap" Name="createdbytxt" Text="" VerticalAlignment="Top" Width="588" Grid.RowSpan="2" FontSize="30" Grid.Column="1" Grid.ColumnSpan="2"/>
-        <TextBox HorizontalAlignment="Left" Height="50" Margin="1.667,0,-3.667,0" Grid.Row="3" TextWrapping="Wrap" Name="mailtxt"  VerticalAlignment="Top" Width="588" FontSize="30" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-        <TextBox HorizontalAlignment="Left" Height="51" Margin="1.667,5.333,-4.667,0" Grid.Row="4" Grid.RowSpan="2" TextWrapping="Wrap" Name="modifiedtxt" Text="" VerticalAlignment="Top" Width="589" FontSize="30" Grid.Column="1" Grid.ColumnSpan="2"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="51" Margin="3.667,44.333,-1.667,0" Grid.Row="4" TextWrapping="Wrap" Name="modifiedbytxt"  Text="" VerticalAlignment="Top" Width="584" FontSize="30" TextChanged="modifiedbytxt_TextChanged" Grid.RowSpan="3" Grid.ColumnSpan="2"/>
-        <TextBox HorizontalAlignment="Left" Height="51" Margin="1.667,1,-4.667,0" Grid.Row="6" TextWrapping="Wrap" Name="serializedtxt" Text="" VerticalAlignment="Top" Width="589" FontSize="30" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="3.667,0.333,0,0" Grid.Row="7" TextWrapping="Wrap" Name="Nametxt" Text="" VerticalAlignment="Top" Width="574" FontSize="30" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-
-        <StackPanel Margin="0,-42,0,56.667" Background="AliceBlue" Height="30" Width="774" HorizontalAlignment="Left" VerticalAlignment="Center"  RenderTransformOrigin="0.502,-2.81" Grid.ColumnSpan="3">
-            <Button Content="Create" Background="Aquamarine" Height="38" Margin="84,0,563.667,0" RenderTransformOrigin="0.515,1.14"/>
-
-        </StackPanel>
-    </Grid>-->
 
     <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto">
 
@@ -93,18 +37,22 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
+            
             <Label>Name:</Label>
             <TextBox Name="name" Grid.Column="1" Margin="0,0,0,10" />
+            
             <Label Grid.Row="1">Language:</Label>
             <TextBox Name="language" Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" />
             <Label Grid.Row="2">CanonicalUrl</Label>
             <TextBox Name="canoniacalUrl" Grid.Row="2" Grid.Column="1"  Margin="0,0,0,10" />
             <Label Grid.Row="3">Category</Label>
-            <TextBox Name="category" Grid.Row="3" Grid.Column="1"  Margin="0,0,0,10" />
-            <Label Grid.Row="4">Main Category</Label>
-            <TextBox Name="mainCategory" Grid.Row="4" Grid.Column="1"  Margin="0,0,0,10" />
-            <Label Grid.Row="5">ddress line 1</Label>
+            <ComboBox Name="category" Grid.Row="3" Grid.Column="1"  Margin="0,0,0,10">
+            </ComboBox>
+            <!--<Label Grid.Row="4">Main Category</Label>
+            <TextBox Name="mainCategory" Grid.Row="4" Grid.Column="1"  Margin="0,0,0,10" />-->
+            <Label Grid.Row="5">Address line 1</Label>
             <TextBox Name="addressline1" Grid.Row="5" Grid.Column="1"  Margin="0,0,0,10" />
             <Label Grid.Row="6">Address line 2</Label>
             <TextBox Name="addressline2" Grid.Row="6" Grid.Column="1"  Margin="0,0,0,10" />
@@ -114,6 +62,7 @@
             <TextBox Name="city" Grid.Row="8" Grid.Column="1"  Margin="0,0,0,10" />
             <!--<Label Grid.Row="9">Category</Label>
             <TextBox Name="Category" Grid.Row="9" Grid.Column="1"  Margin="0,0,0,10" />-->
+           
             <Label Grid.Row="10">Municippality</Label>
             <TextBox Name="municippality" Grid.Row="10" Grid.Column="1"  Margin="0,0,0,10" />
             <Label Grid.Row="11">Region</Label>
@@ -137,11 +86,13 @@
                 <ComboBoxItem Content = "Nej"/>
                 <ComboBoxItem Content = "Ja"/>
             </ComboBox>
-            <GroupBox Header="Create new Attraction" HorizontalAlignment="Center" Height="819" Margin="-44,-35,-36,-79.03" Grid.RowSpan="22" VerticalAlignment="Top" Width="816" Grid.ColumnSpan="2">
+            
+            <GroupBox Header="Attraction" HorizontalAlignment="Center" Height="819" Margin="-44,-35,-36,-79.03" Grid.RowSpan="22" VerticalAlignment="Top" Width="816" Grid.ColumnSpan="2">
                 <Grid>
-                    <Button Content="Tilføj" HorizontalAlignment="Left" Margin="300,561,0,50" VerticalAlignment="Bottom" Width="75" Height="27" RenderTransformOrigin="-2.009,-2.297" Click="UpdateDataButton_Click" />
+                    <Button Content="Opdate" HorizontalAlignment="Left" Margin="300,561,0,50" VerticalAlignment="Bottom" Width="75" Height="27" RenderTransformOrigin="-2.009,-2.297" Click="UpdateDataButton_Click" />
 
                     <Button Content="Cancel" HorizontalAlignment="Left" Margin="400,561,0,50" VerticalAlignment="Bottom" Width="75" Height="27" RenderTransformOrigin="-2.009,-2.297" Click="btnClose_Click" />
+                    <Button Content="Slet" HorizontalAlignment="Left" Margin="500,561,0,50" VerticalAlignment="Bottom" Width="75" Height="27" RenderTransformOrigin="-2.009,-2.297" Click="DeleteDataButton_Click" />
                 </Grid>
             </GroupBox>
 
