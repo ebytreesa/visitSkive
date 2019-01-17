@@ -108,13 +108,18 @@ namespace visitSkive
             AddParam(cmd, municippality.Text, "Municippality", SqlDbType.NVarChar);
             AddParam(cmd, city.Text, "City", SqlDbType.NVarChar);
             AddParam(cmd, region.Text, "Region", SqlDbType.NVarChar);
-            AddParam(cmd, postalCode.Text, "postalCode", SqlDbType.Int);
-            
-            //if (int.TryParse(postalCode,  out postalCode ))
-            //{
-            //    AddParam(cmd, postalCode.Text, "postalCode", SqlDbType.Int);
-
-            //}
+            //AddParam(cmd, postalCode.Text, "postalCode", SqlDbType.Int);
+            int postalint = 0;
+            try
+            {
+                 postalint = int.Parse(postalCode.Text);
+                
+            }
+            catch (Exception ex)
+            {
+                //postalint = 0;
+            }
+            AddParam(cmd, postalint, "postalCode", SqlDbType.Int);
             AddParam(cmd, geoLat.Text, "GeoLat", SqlDbType.Float);
             AddParam(cmd, geoLong.Text, "GeoLong", SqlDbType.Float);
 
